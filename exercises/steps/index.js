@@ -17,6 +17,13 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+    for (let i = 1; i <= n; i++) {
+        const hashtags = Array(i).fill('#').join('')
+        const spaces = Array(n - i).fill(' ').join('')
+
+        console.log(hashtags + spaces)
+    }
+}
 
 module.exports = steps;
