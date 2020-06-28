@@ -8,15 +8,29 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {
-    const result = [0, 1]
+function memoize(fn) {
+    const cache = {}
 
-    for (let i = 2; i <= n; i++) {
-        result[i] = result[i - 1] + result[i - 2]
+    return function(...args) {
+        if (cache[args]) {
+            return cache[args]
+        }
+
+        cache[args] = fn.apply(this, args)
+
+        return cache[args]
+    }
+}
+
+function fib(n) {
+    if (n < 2) {
+        return n
     }
 
-    return result[result.length - 1]
+    return fib(n - 1) + fib(n - 2)
 }
+
+fib = memoize(fib)
 
 module.exports = fib;
 
@@ -38,4 +52,14 @@ module.exports = fib;
 //     }
 
 //     return fibonacci(n, memo)
+// }
+
+// function fib(n) {
+//     const result = [0, 1]
+
+//     for (let i = 2; i <= n; i++) {
+//         result[i] = result[i - 1] + result[i - 2]
+//     }
+
+//     return result[result.length - 1]
 // }
