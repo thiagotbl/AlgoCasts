@@ -15,7 +15,8 @@ class LinkedList {
     }
 
     insertFirst(data) {
-        this.head = new Node(data, this.head)
+        // this.head = new Node(data, this.head)
+        this.insertAt(data, 0)
     }
 
     size() {
@@ -35,13 +36,14 @@ class LinkedList {
     }
 
     getLast() {
-        let node = this.head
+        // let node = this.head
 
-        while (node && node.next) {
-            node = node.next
-        }
+        // while (node && node.next) {
+        //     node = node.next
+        // }
 
-        return node
+        // return node
+        return this.getAt(this.size() - 1)
     }
 
     clear() {
@@ -57,31 +59,33 @@ class LinkedList {
     }
 
     removeLast() {
-        if (!this.head || !this.head.next) {
-            this.head = null
+        // if (!this.head || !this.head.next) {
+        //     this.head = null
 
-            return
-        }
+        //     return
+        // }
 
-        let previous = this.head
-        let last = this.head.next
+        // let previous = this.head
+        // let last = this.head.next
 
-        while (last.next) {
-            previous = last
-            last = last.next
-        }
+        // while (last.next) {
+        //     previous = last
+        //     last = last.next
+        // }
 
-        previous.next = null
+        // previous.next = null
+        this.removeAt(this.size() - 1)
     }
 
     insertLast(data) {
-        if (!this.head) {
-            this.head = new Node(data)
+        // if (!this.head) {
+        //     this.head = new Node(data)
 
-            return
-        }
+        //     return
+        // }
 
-        this.getLast().next = new Node(data)
+        // this.getLast().next = new Node(data)
+        this.insertAt(data, this.size())
     }
 
     getAt(index) {
